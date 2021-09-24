@@ -36,7 +36,21 @@ class mod_tab_mod_form extends moodleform_mod
         $mform = $this->_form;
 
         $config = get_config('tab');
-
+        $tabstyleoptions = array(
+            0 => 'recit_tab_0',
+            //1 => 'Recit_tab_1',
+           // 2 => 'Recit_tab_2',
+            //3 => 'Recit_tab_3',
+            4 => 'Recit_tab_4',
+            //5 => 'Recit_tab_5',
+            //6 => 'Recit_tab_6',
+            7 => 'Recit_tab_7',
+          /*  8 => 'Recit_tab_8',
+            9 => 'Recit_tab_9',
+            10 => 'Recit_tab_10',*/
+            11 => 'Recit_tab_11',
+            12 => 'Bootstrap'
+        );
         $mform->addElement('header', 'general', get_string('general', 'form'));
         $mform->addElement('text', 'name', get_string('name', 'tab'), array('size' => '45'));
         if (!empty($CFG->formatstringstriptags))
@@ -50,8 +64,9 @@ class mod_tab_mod_form extends moodleform_mod
         $mform->addRule('name', null, 'required', null, 'client');
 
         //Add Intro
-        $this->add_intro_editor(false);
-
+        $this->standard_intro_elements(false);
+        $mform->addElement('select', 'classrecit', get_string('tabstyle', 'tab'), $tabstyleoptions);
+        $mform->setType('classrecit', PARAM_INT);
         $mform->setDefault('printintro', 0);
         $mform->setAdvanced('printintro', false);
 
@@ -135,7 +150,10 @@ class mod_tab_mod_form extends moodleform_mod
         //*********************Display menu checkbox and name******************************
         //*********************************************************************************
         $mform->addElement('header', 'menu', get_string('displaymenu', 'tab'));
+
+        
         $mform->addElement('advcheckbox', 'displaymenu', get_string('displaymenuagree', 'tab'), null, array('group' => 1), array('0', '1'));
+        
         $mform->setType('displaymenu', PARAM_INT);
         $mform->addElement('text', 'taborder', get_string('taborder', 'tab'), array('size' => '15'));
         $mform->addElement('text', 'menuname', get_string('menuname', 'tab'), array('size' => '45'));

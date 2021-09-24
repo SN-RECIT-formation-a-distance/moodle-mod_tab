@@ -13,10 +13,19 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later  **
  * *************************************************************************
  * ************************************************************************ */
-$plugin->version = 2021092400;  // The current module version (Date: YYYYMMDDXX)
-$plugin->requires = 2019052000;
-$plugin->maturity = MATURITY_BETA;
-$plugin->release = 'R14-V1.0';
-$plugin->cron = 0;           // Period for cron to check this module (secs)
-$plugin->component = 'mod_tab';
-$plugin->dependencies = ['theme_recit' => 2021092400];
+
+namespace mod_tab\output;
+
+/**
+ * Description of renderer
+ *
+ * @author patrick
+ */
+class renderer extends \plugin_renderer_base {
+
+    public function render_view(\templatable $view) {
+        $data = $view->export_for_template($this);
+        return $this->render_from_template('mod_tab/view', $data);
+    }
+
+}

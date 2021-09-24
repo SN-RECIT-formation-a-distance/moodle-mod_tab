@@ -294,4 +294,37 @@ function xmldb_tab_upgrade($oldversion = 0)
         // tab savepoint reached
         upgrade_mod_savepoint(true, 2014040200, 'tab');
     }
+    if ($oldversion < 2016053102)
+    {
+        //+ Moodle 3.0 Update
+        // tab savepoint reached
+        upgrade_mod_savepoint(true, 2016053102, 'tab');
+    }
+    if ($oldversion < 2019062401)
+    {
+        {
+
+            // Define field intro to be added to tab
+            $table = new xmldb_table('tab');
+            $field = new xmldb_field('classrecit', XMLDB_TYPE_INTEGER, '4', 0, null, null, null, 'introformat');
+            
+    
+            // Conditionally launch add field intro
+            if (!$dbman->field_exists($table, $field))
+            {
+                $dbman->add_field($table, $field);
+            }
+            
+    
+            // tab savepoint reached
+            upgrade_mod_savepoint(true, 2019062401, 'tab');
+        }
+        
+    }
+    if ($oldversion < 2019062402)
+    {
+        //+ Moodle 3.0 Update
+        // tab savepoint reached
+        upgrade_mod_savepoint(true, 2019062402, 'tab');
+    }
 }
