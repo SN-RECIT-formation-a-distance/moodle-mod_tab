@@ -19,4 +19,4 @@ $plugin->maturity = MATURITY_BETA;
 $plugin->release = 'R14-V1.0';
 $plugin->cron = 0;           // Period for cron to check this module (secs)
 $plugin->component = 'mod_tab';
-$plugin->dependencies = ['theme_recit' => 2021092400];
+$plugin->dependencies = [];
