@@ -19,4 +19,5 @@ $plugin->maturity = MATURITY_BETA;
 $plugin->release = 'v1.15.0';
 $plugin->cron = 0;           // Period for cron to check this module (secs)
 $plugin->component = 'mod_tab';
+$plugin->supported = [39, 400];      //  Moodle 3.9.x, 3.10.x and 3.11.x are supported.
 $plugin->dependencies = [];
