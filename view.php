@@ -79,7 +79,6 @@ $event->add_record_snapshot($PAGE->cm->modname, $tab);
 $event->trigger();
 
 echo $OUTPUT->header();
-echo $OUTPUT->heading(format_string($tab->name), 2, 'main', 'pageheading');
 
 
 $output = $PAGE->get_renderer('mod_tab');
