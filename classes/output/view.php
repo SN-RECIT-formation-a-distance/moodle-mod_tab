@@ -161,7 +161,9 @@ class view implements \renderable, \templatable {
         global $CFG, $DB;
         
         $context = \context_module::instance($this->cm->id);
-        $editoroptions = array('subdirs' => 1, 'maxbytes' => $CFG->maxbytes, 'maxfiles' => -1, 'changeformat' => 1, 'context' => $context, 'noclean' => 1, 'trusttext' => true);
+        // Moodle 4.5 does not accept all these options
+        //$editoroptions = array('subdirs' => 1, 'maxbytes' => $CFG->maxbytes, 'maxfiles' => -1, 'changeformat' => 1, 'context' => $context, 'noclean' => 1, 'trusttext' => true);
+        $editoroptions = array( 'context' => $context, 'noclean' => 1);
         $options = $DB->get_records('tab_content', array('tabid' => $this->tab->id), 'tabcontentorder');
         $contents = [];
         $i = 0;
